@@ -29,12 +29,20 @@ namespace CombatPokemonConsole
         //    return this.AttackList.ElementAt(Convert.ToInt32(Console.ReadLine()));
         //}
 
-        public void UseAttack(Pokemon opponent)
+        public void ChooseAndUseAttack(Pokemon opponent)
         {
             Console.WriteLine("Que doit faire " + this.Name + " ?\n");
-            Attack attack = this.AttackList.ElementAt(Convert.ToInt32(Console.ReadLine())-1);
+            Attack attack = this.AttackList.ElementAt(Convert.ToInt32(Console.ReadLine()) - 1);
             Console.WriteLine(this.Name + " lance " + attack.Name + " !\n");
             opponent.Hp = opponent.Hp - attack.Damages;
+        }
+
+        public void UseRandomAttack(Pokemon opponent)
+        {
+            Random rnd = new Random();
+            int random = rnd.Next(this.AttackList.Count);
+            Console.WriteLine(this.Name + " lance " + this.AttackList[random].Name + " !\n");
+            opponent.Hp = opponent.Hp - this.AttackList[random].Damages;
         }
 
         //Display

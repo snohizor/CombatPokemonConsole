@@ -26,14 +26,10 @@ namespace CombatPokemonConsole
             Pokemon Carapuce = new Pokemon("Carapuce", 90, 90, 60, CarapuceAttackList);
             Pokemon Salameche = new Pokemon("Salameche", 80, 80, 65, SalamecheAttackList);
 
-            
-            Console.WriteLine(Bulbizarre.DisplayPokemon());
-            Console.WriteLine(Salameche.DisplayPokemon());
 
-            Bulbizarre.UseAttack(Salameche);
+            Game combat = new Game();
 
-            Console.WriteLine(Bulbizarre.DisplayPokemon());
-            Console.WriteLine(Salameche.DisplayPokemon());
+            combat.Fight(Bulbizarre, Salameche);
         }
     }
 }
