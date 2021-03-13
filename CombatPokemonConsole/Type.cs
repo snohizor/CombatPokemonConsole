@@ -5,27 +5,9 @@ namespace CombatPokemonConsole
 {
     public enum Type
     {
-        Normal,
-        Eau,
-        Feu,
-        Plante
-
+        Normal = 0,
+        Eau = 1,
+        Feu = 2,
+        Plante = 3
     };
-
-    public class _Type
-    {
-        public Type Type { get; set; }
-
-        //Creation de la liste des Types dispo
-        List<Type> TypesList = new List<Type>();
-
-        public void PrintAllSuits()
-        {
-            foreach (Type type in (Type[])Enum.GetValues(typeof(Type)))
-            {
-                TypesList.Add(type);
-            }
-        }
-    }
-
 }

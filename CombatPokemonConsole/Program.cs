@@ -27,7 +27,7 @@ namespace CombatPokemonConsole
             Pokemon Carapuce = new Pokemon("Carapuce", Type.Eau, 90, 90, 60, CarapuceAttackList);
             Pokemon Salameche = new Pokemon("Salameche", Type.Feu, 80, 80, 65, SalamecheAttackList);
 
-            
+                        
             //START GAME
 
             Game combat = new Game();

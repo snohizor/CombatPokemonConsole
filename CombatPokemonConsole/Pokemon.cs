@@ -34,9 +34,6 @@ namespace CombatPokemonConsole
                 { 100, 50, 200, 50},
         };
 
-        
-	
-
         //Fighting
         //public Attack GetChosenAttack()
         //{
@@ -46,7 +43,7 @@ namespace CombatPokemonConsole
 
         private void ApplyDamages(Pokemon target, Attack attack)
         {
-            target.Hp = target.Hp - ((attack.Damages * forceWeak[attack.Type, target.Type]) / 100);
+            target.Hp = target.Hp - ((attack.Damages * forceWeak[(int)target.Type, (int)attack.Type]) / 100);
         }
 
         public void ChooseAndUseAttack(Pokemon opponent)
