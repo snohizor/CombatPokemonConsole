@@ -14,11 +14,11 @@ namespace CombatPokemonConsole
         public int Speed { get; set; }
         public List<Attack> AttackList { get; set; }
 
-        public Pokemon(string name, Type type, int hpMax, int hp, int speed, List<Attack> attackList)
+        public Pokemon(string name, Type type, int hp, int speed, List<Attack> attackList)
         {
             Name = name;
             Type = type;
-            HpMax = hpMax;
+            HpMax = hp;
             Hp = hp;
             Speed = speed;
             AttackList = attackList;

@@ -23,9 +23,9 @@ namespace CombatPokemonConsole
             List<Attack> SalamecheAttackList = new List<Attack> { Griffes, Flammeche };
 
             //Instanciation Pokemons
-            Pokemon Bulbizarre = new Pokemon("Bulbizarre", Type.Plante, 100, 100, 50, BulbizarreAttackList);
-            Pokemon Carapuce = new Pokemon("Carapuce", Type.Eau, 90, 90, 60, CarapuceAttackList);
-            Pokemon Salameche = new Pokemon("Salameche", Type.Feu, 80, 80, 65, SalamecheAttackList);
+            Pokemon Bulbizarre = new Pokemon("Bulbizarre", Type.Plante, 100, 50, BulbizarreAttackList);
+            Pokemon Carapuce = new Pokemon("Carapuce", Type.Eau, 90, 60, CarapuceAttackList);
+            Pokemon Salameche = new Pokemon("Salameche", Type.Feu, 80, 65, SalamecheAttackList);
 
             //Création de la liste des pokemon
             List<Pokemon> pokelist = new List<Pokemon>()

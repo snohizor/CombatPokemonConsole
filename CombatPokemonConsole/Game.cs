@@ -29,13 +29,12 @@ namespace CombatPokemonConsole
 
             while (player.Hp > 0 && opponent.Hp > 0)
             {
+                //1er block au cas ou opponent.Speed > player.Speed
                 Console.WriteLine("Round " + NbRounds + "\n");
                 if(NbRounds == 1 && opponent.Speed > player.Speed)
                 {
                     opponent.UseRandomAttack(player);
-
                     Console.WriteLine(DisplayBothPokemonAndHp(player, opponent));
-
                     Console.WriteLine("...");
                     Console.ReadLine();
                 }
@@ -43,9 +42,7 @@ namespace CombatPokemonConsole
                 if (player.Hp > 0 && opponent.Hp > 0)
                 {
                     player.ChooseAndUseAttack(opponent);
-
                     Console.WriteLine(DisplayBothPokemonAndHp(player, opponent));
-
                     Console.WriteLine("...");
                     Console.ReadLine();
                 }     
@@ -53,9 +50,7 @@ namespace CombatPokemonConsole
                 if (player.Hp > 0 && opponent.Hp > 0)
                 {
                     opponent.UseRandomAttack(player);
-
                     Console.WriteLine(DisplayBothPokemonAndHp(player, opponent));
-
                     Console.WriteLine("...");
                     Console.ReadLine();
                 }
