@@ -35,20 +35,23 @@ namespace CombatPokemonConsole
         };
 
         //Fighting
-        //public Attack GetChosenAttack()
-        //{
-        //    Console.WriteLine("Que doit faire " + this.Name + " ?\n");
-        //    return this.AttackList.ElementAt(Convert.ToInt32(Console.ReadLine()));
-        //}
-
         private void ApplyDamages(Pokemon target, Attack attack)
         {
+            if(forceWeak[(int)target.Type, (int)attack.Type] > 100)
+            {
+                Console.WriteLine("C'est super efficace !\n");
+            }
+            if(forceWeak[(int)target.Type, (int)attack.Type] < 100)
+            {
+                Console.WriteLine("Ce n'est pas très efficace...\n");
+            }
             target.Hp = target.Hp - ((attack.Damages * forceWeak[(int)target.Type, (int)attack.Type]) / 100);
         }
 
         public void ChooseAndUseAttack(Pokemon opponent)
         {
             Console.WriteLine("Que doit faire " + this.Name + " ?\n");
+            Console.WriteLine(this.GetPokemonAttacks());
             Attack attack = this.AttackList.ElementAt(Convert.ToInt32(Console.ReadLine()) - 1);
             Console.WriteLine(this.Name + " lance " + attack.Name + " !\n");
             ApplyDamages(opponent, attack);
@@ -63,12 +66,17 @@ namespace CombatPokemonConsole
         }
 
         //Display
-        public string DisplayPokemon()
+        public string DisplayPokemonAndAttacks()
         {
             string PokemonStats = this.Name + " " + this.Hp + "/" + this.HpMax + "\n" +
                 this.GetPokemonAttacks();
-
             return PokemonStats;
+        }
+
+        public string DisplayPokemonAndHp()
+        {
+            string PokemonHp = this.Name + " " + this.Hp + "/" + this.HpMax + "\n";
+            return PokemonHp;
         }
 
         public string GetPokemonAttacks()
