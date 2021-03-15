@@ -5,6 +5,7 @@ namespace CombatPokemonConsole
 {
     class Game
     {
+        
         public Pokemon GetChosenPokemonForFight(Boolean player, List<Pokemon> pokelist)
         {
             if(player)
@@ -69,6 +70,7 @@ namespace CombatPokemonConsole
                 opponent.Name + " " + opponent.Hp + "/" + opponent.HpMax;
             return msg;
         }
+        
     }
 
     

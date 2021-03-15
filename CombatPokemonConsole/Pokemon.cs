@@ -7,47 +7,83 @@ namespace CombatPokemonConsole
 {
     class Pokemon
     {
+        
+        public int id { get; set; }
         public string Name { get; set; }
-        public Type Type { get; set; }
-        public int HpMax { get; set; }
+        public Type Type1 { get; set; }
+        public Type Type2 { get; set; }
+        public int TotalStats { get; set; }
         public int Hp { get; set; }
+        public int HpMax { get; set; }
+        public int Atk { get; set; }
+        public int Def { get; set; }
+        public int SpAtk { get; set; }
+        public int SpDef { get; set; }
         public int Speed { get; set; }
+        public bool Legendary { get; set; }
         public List<Attack> AttackList { get; set; }
 
-        public Pokemon(string name, Type type, int hp, int speed, List<Attack> attackList)
+        public Pokemon(int id, string name, Type type1, Type type2, int totalStats, int hp, int atk, int def, int spAtk, int spDef, int speed, bool legendary, List<Attack> attackList)
         {
+            this.id = id;
             Name = name;
-            Type = type;
-            HpMax = hp;
+            Type1 = type1;
+            Type2 = type2;
+            TotalStats = totalStats;
             Hp = hp;
+            HpMax = hp;
+            Atk = atk;
+            Def = def;
+            SpAtk = spAtk;
+            SpDef = spDef;
             Speed = speed;
+            Legendary = legendary;
             AttackList = attackList;
         }
 
+  
         //Tableau Forces/Faiblesses Types
-        //Normal - Eau - Feu - Plante
+        //17 types -> Normal - Feu - Eau - Plante - Electrik - Glace - Combat - Poison - Sol - Vol - Psy - Insecte - Roche - Spectre - Dragon - Ténèbres - Acier
         int[,] forceWeak =
         {
-                { 100, 100, 100, 100 },
-                { 100, 50, 50, 200},
-                { 100, 200, 50, 50},
-                { 100, 50, 200, 50},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100},
+                { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100}
         };
+
+
+        
+
 
         //Fighting
         private void ApplyDamages(Pokemon target, Attack attack)
         {
-            if(forceWeak[(int)target.Type, (int)attack.Type] > 100)
+            if(forceWeak[(int)target.Type1, (int)attack.Type] > 100)
             {
                 Console.WriteLine("C'est super efficace !\n");
             }
-            if(forceWeak[(int)target.Type, (int)attack.Type] < 100)
+            if(forceWeak[(int)target.Type1, (int)attack.Type] < 100)
             {
                 Console.WriteLine("Ce n'est pas très efficace...\n");
             }
-            target.Hp = target.Hp - ((attack.Damages * forceWeak[(int)target.Type, (int)attack.Type]) / 100);
+            target.Hp = target.Hp - ((attack.Damages * forceWeak[(int)target.Type1, (int)attack.Type]) / 100);
         }
 
+        
         public void ChooseAndUseAttack(Pokemon opponent)
         {
             Console.WriteLine("Que doit faire " + this.Name + " ?\n");
@@ -90,6 +126,6 @@ namespace CombatPokemonConsole
             }
             return PokemonAttackList;
         }
-
+        
     }
 }
