@@ -22,8 +22,8 @@ namespace CombatPokemonConsole
         {
             Id = int.Parse(lineFromCsv[0]);
             Name = lineFromCsv[1];
-            Type = (Element)Enum.Parse(typeof(Element), lineFromCsv[3], true);
-            Damages = int.Parse(lineFromCsv[4]);
+            Type = (Element)Enum.Parse(typeof(Element), lineFromCsv[3]);
+            Damages = int.Parse(lineFromCsv[5]);
         }
     }
 }

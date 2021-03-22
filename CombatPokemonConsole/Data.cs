@@ -9,18 +9,19 @@ namespace CombatPokemonConsole
 {
     public static class Data
     {
-        public static List<Pokemon> Pokemons = new List<Pokemon>();
         public static List<Attack> Attacks = new List<Attack>();
+        public static List<Pokemon> Pokemons = new List<Pokemon>();
         public static int[,] Affinities;
 
         
 
         static Data()
         {
-            int nbAffinities = Enum.GetNames(typeof(Element)).Length;
+            int nbAffinities = (Enum.GetNames(typeof(Element)).Length - 1);
             Affinities = new int[nbAffinities, nbAffinities];
-            LoadPokemons(LoadCSV("./csv/pokemondatabase.csv"));
             LoadAttacks(LoadCSV("./csv/attacksdatabase.csv"));
+            LoadPokemons(LoadCSV("./csv/pokemondatabase.csv"));
+            DistributeAttacks(Pokemons, Attacks);   
         }
 
         public static List<List<string>> LoadCSV(string path)
@@ -66,6 +67,34 @@ namespace CombatPokemonConsole
                 }
                 lineIndex++;
             }
+        }
+
+        static void DistributeAttacks(List<Pokemon> pokelist, List<Attack> attacklist)
+        {
+            foreach (Pokemon pokemon in pokelist)
+            {
+                Attack[] pokeAttacks =
+                {
+                    GetAttackFromString(attacklist, pokemon.MoveName1),
+                    GetAttackFromString(attacklist, pokemon.MoveName2),
+                    GetAttackFromString(attacklist, pokemon.MoveName3),
+                    GetAttackFromString(attacklist, pokemon.MoveName4)
+                };
+                pokemon.AttackList.AddRange(pokeAttacks);
+            }
+        }
+
+        static Attack GetAttackFromString(List<Attack> attacklist, string attackName)
+        {
+            Attack error = new Attack("errorAttack", Element.Normal, 420);
+            foreach (Attack attack in attacklist)
+            {
+                if (attackName == attack.Name)
+                {
+                    return attack;
+                }
+            }
+            return error;
         }
     }
 }

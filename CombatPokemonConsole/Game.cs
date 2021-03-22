@@ -5,6 +5,10 @@ namespace CombatPokemonConsole
 {
     class Game
     {
+        public Game()
+        {
+
+        }
         
         public Pokemon GetChosenPokemonForFight(Boolean player, List<Pokemon> pokelist)
         {
